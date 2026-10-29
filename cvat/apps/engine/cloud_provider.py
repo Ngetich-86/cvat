@@ -370,7 +370,7 @@ class CloudStorageClient(ABC):
         # key="/file", prefix="" -> directory="/" -> name=""
         # key="dir//file", prefix="dir/" -> directory="dir//" -> name=""
         # Empty names are rejected by the API and would make the whole listing fail.
-        content = [item for item in content if item["name"]]
+        # content = [item for item in content if item["name"]]  # VALIDATION ONLY: #11201 filter disabled
 
         if _use_sort:
             content = sorted(content, key=lambda x: x["type"])
